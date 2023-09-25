@@ -2,8 +2,11 @@ import Ball from "./Ball.js"
 import Paddle from "./paddle.js";
 
 const ball = new Ball(document.getElementById("ball"));
-const playerPaddle = new Paddle(document.getElementById("player-paddle"))
+const playerPaddle = new Paddle(document.getElementById("player-paddle")) 
 const computerPaddle = new Paddle(document.getElementById("computer-paddle"))
+const playerScoreElem = document.getElementById("player-score")
+const computerScoreElem = document.getElementById("computer-score")
+
 
 let lastTime;
 
@@ -13,9 +16,7 @@ function update(time) {
        //ball.update(delta);
        computerPaddle.update(delta, ball.y )
 
-       if (isLose()) {
-        console.log("lose")
-       }
+       if (isLose()) handleLose()
     }
     
    lastTime = time;
@@ -25,6 +26,15 @@ function update(time) {
 function isLose() {
     const rect = ball.rect
     return rect.bottom >= window.innerHeight || rect.top <= 0 
+}
+
+function handleLose() {
+    const rect = ball.rect()
+    if(rect.right >= window.innerHeight) {
+        playerScoreElem
+    }
+    ball.reset   
+    computerPaddle.reset
 }
 
 document.addEventListener("mousemove", e => {
