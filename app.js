@@ -2,7 +2,7 @@ import Ball from "./Ball.js"
 import Paddle from "./paddle.js";
 
 const ball = new Ball(document.getElementById("ball"));
-const playerPaddle = new Paddle(document.getElementById("player-paddle")) 
+const playerPaddle = new Paddle(document.getElementById("player-paddle"))
 const computerPaddle = new Paddle(document.getElementById("computer-paddle"))
 const playerScoreElem = document.getElementById("player-score")
 const computerScoreElem = document.getElementById("computer-score")
@@ -31,7 +31,7 @@ function isLose() {
 function handleLose() {
     const rect = ball.rect()
     if(rect.right >= window.innerHeight) {
-        playerScoreElem
+        playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1
     }
     ball.reset   
     computerPaddle.reset
